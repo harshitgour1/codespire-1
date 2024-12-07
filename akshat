@@ -1,0 +1,30 @@
+# Function to calculate the amount Akshat can spend
+def calculate_spending(date):
+    # Convert the integer input to a string for easy manipulation
+    date_str = str(date)
+    
+    # Initialize variables
+    even_position_product = 1
+    odd_position_sum = 0
+    
+    # Iterate through the date string
+    for i, digit in enumerate(date_str):
+        digit = int(digit)  # Convert the character to an integer
+        if (i + 1) % 2 == 0:  # Check for even position (1-based index)
+            even_position_product *= digit
+        else:  # Odd position (1-based index)
+            odd_position_sum += digit
+    
+    # Ensure odd_position_sum is not zero to avoid division by zero
+    if odd_position_sum == 0:
+        return 0
+    
+    # Calculate the result
+    result = even_position_product // odd_position_sum  # Use integer division
+    return result
+
+# Input format
+A = int(input("Enter the date in DDMMYYYY format: "))
+
+# Output the result
+print(calculate_spending(A))
